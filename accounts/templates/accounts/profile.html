@@ -1,0 +1,48 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    Profile page
+{% endblock %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="container">
+
+        <h1>Profile</h1>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Username</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">{{ user.username }}</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">{{ user.get_full_name }}</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Group</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {% for group in groups %}
+                        {{ group.name }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <a class="btn btn-outline-success" href="{% url 'looks:new' %}">New Look</a>
+                <a class="btn btn-outline-warning" href="{% url 'catalogues:favourites' %}">Favourites</a>
+                <a class="btn btn-outline-secondary" href="{% url 'main:home' %}">Back</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
