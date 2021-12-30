@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    About page
+{% endblock %}
+
+{% block content %}
+    <h1>About</h1>
+    <p>This is a project for 3d Semester.</p>
+    <p>
+        <h4>Core technologies:<br></h4>
+            <div class="card">
+                 <ul class="list-group list-group-flush">
+                     <div class="card-body">
+                          <li class="list-group-item">Python</li>
+                          <li class="list-group-item">Django</li>
+                          <li class="list-group-item">django-filters</li>
+                          <li class="list-group-item">Bootstrap</li>
+                     </div>
+                </ul>
+            </div>
+
+    </p>
+    <p>
+        <h4>Structure:<br></h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                  <div class="card">
+                      <h6 class="ml-3 mt-2">Main</h6>
+                      <ul class="list-group list-group-flush">
+                          <div class="card-body">
+                              <li class="list-group-item">home</li>
+                              <li class="list-group-item">about</li>
+                          </div>
+                      </ul>
+                  </div>
+              </li>
+              <li class="list-group-item">
+                  <div class="card">
+                      <h6 class="ml-3 mt-2">Accounts</h6>
+                      <ul class="list-group list-group-flush">
+                          <div class="card-body">
+                              <li class="list-group-item">register</li>
+                              <li class="list-group-item">login</li>
+                              <li class="list-group-item">profile</li>
+                          </div>
+                      </ul>
+                  </div>
+              </li>
+              <li class="list-group-item card">
+                  <div class="card">
+                      <h6 class="ml-3 mt-2">Catalogues</h6>
+                      <ul class="list-group list-group-flush">
+                          <div class="card-body">
+                              <li class="list-group-item">catalogue</li>
+                              <li class="list-group-item">search</li>
+                              <li class="list-group-item">favourites</li>
+                          </div>
+                      </ul>
+                  </div>
+              </li>
+              <li class="list-group-item card">
+                  <div class="card">
+                      <h6 class="ml-3 mt-2">Looks</h6>
+                      <ul class="list-group list-group-flush">
+                          <div class="card-body">
+                              <li class="list-group-item">new/edit</li>
+                              <li class="list-group-item">delete</li>
+                              <li class="list-group-item">look</li>
+                          </div>
+                      </ul>
+                  </div>
+              </li>
+
+            </ul>
+    </p>
+    <p>
+        Made by:<br>
+        Anatolii Trofimov & Andrey Razumov<br>
+        gr. P3221 & P3222
+    </p>
+{% endblock %}
