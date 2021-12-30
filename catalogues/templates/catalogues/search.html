@@ -1,0 +1,47 @@
+{% extends 'catalogues/base.html' %}
+
+{% block title %}
+    Search page
+{% endblock %}
+
+{% block content %}
+    <h1>Search</h1>
+
+    <form method="GET">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h6 class="text-secondary">Name: {{ lookFilter.form.name }}</h6>
+                </div>
+                <div class="col-sm-1 ml-4">
+                    <h6 class=" text-secondary">Appafrels: {{ lookFilter.form.apparels }}</h6>
+                </div>
+                <div class="col-sm-1 text-secondary ml-3 mt-3"><button class="btn btn-lg btn-outline-secondary" type="submit">Search</button></div>
+            </div>
+        </div>
+    </form>
+
+    <table class="table mt-4 table-hover">
+        {% for look in looks %}
+            <tbody>
+            <tr>
+                <td><h5>{{ look.name }}</h5></td>
+                {% if request.user.is_authenticated %}
+                    {% if look.favourite.count == 1 %}
+                        <td>In Favourites: {{ look.favourite.count }} time</td>
+                    {% else %}
+                        <td>In Favourites: {{ look.favourite.count }} times</td>
+                    {% endif %}
+                {% endif %}
+                <td><a class="btn btn-outline-info" href="{% url 'looks:look' look.pk %}">View</a></td>
+                {% if request.user.is_authenticated %}
+                    <td><a class="btn btn-outline-success" href="{% url 'looks:new' %}">Edit</a></td>
+                {% endif %}
+                {% if request.user.is_staff %}
+                    <td><a class="btn btn-outline-danger" href="{% url 'looks:delete' recipe.pk %}">Delete</a></td>
+                {% endif %}
+            </tr>
+            <tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

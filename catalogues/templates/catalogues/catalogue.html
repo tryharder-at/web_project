@@ -1,0 +1,41 @@
+{% extends 'catalogues/base.html' %}
+
+{% block title %}
+    Catalogue page
+{% endblock %}
+
+{% block content %}
+    <h1>Catalogue</h1>
+    <table class="table mt-4 table-hover">
+        <thead>
+        <tr>
+            <th>Recipe</th>
+            {% if request.user.is_authenticated %}
+                <th>Favourite</th>
+            {% endif %}
+            <th></th>
+            {% if request.user.is_staff %}
+            <th></th>
+            {% endif %}
+        </tr>
+        </thead>
+        {% for look in looks %}
+            <tbody>
+            <tr>
+                <td><h5>{{ look.name }}</h5></td>
+                {% if request.user.is_authenticated %}
+                    {% if look.favourite.count == 1 %}
+                        <td>In Favourites: {{ look.favourite.count }} time</td>
+                    {% else %}
+                        <td>In Favourites: {{ look.favourite.count }} times</td>
+                    {% endif %}
+                {% endif %}
+                <td><a class="btn btn-outline-info" href="{% url 'looks:look' look.pk %}">View</a></td>
+                {% if request.user.is_staff %}
+                    <td><a class="btn btn-outline-danger" href="{% url 'looks:delete' look.pk %}">Delete</a></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

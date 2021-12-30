@@ -1,0 +1,32 @@
+{% extends 'catalogues/base.html' %}
+
+{% block title %}
+    Favourites page
+{% endblock %}
+
+{% block content %}
+    <h1>Favourites</h1>
+    <table class="table">
+        <tr>
+            <th>Recipe</th>
+            <th></th>
+            {% if request.user.is_staff %}
+            <th></th>
+            {% endif %}
+        </tr>
+
+        {% for look in looks %}
+            <tr>
+                <td><h5>{{ look.name }}</h5></td>
+                <td><a class="btn btn-outline-info" href="{% url 'looks:look' look.pk %}">View</a></td>
+                {% if request.user.is_staff %}
+                    <td><a class="btn btn-outline-danger" href="{% url 'looks:delete' look.pk %}">Delete</a></td>
+                {% endif %}
+            </tr>
+        {% empty %}
+            <tr>
+                <td>No Favourite Looks found.</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
