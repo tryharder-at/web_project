@@ -1,0 +1,44 @@
+{% extends 'looks/base.html' %}
+
+{% block title %}
+    Editing
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>New recipe</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div class="card card-body">
+                <div class="list-group list-group-flush">
+                    <div class="row list-group-item">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">{{ form.name }}</div>
+                    </div>
+                    <div class="row list-group-item">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Description</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">{{ form.description }}</div>
+                    </div>
+                    <div class="row list-group-item">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Ingredients</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">{{ form.apparels }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-toolbar mt-4" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <input class="btn btn-outline-info" type="submit" name="Submit">
+                    <a class="btn btn-outline-secondary" href="{% url 'catalogues:catalogue' %}">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

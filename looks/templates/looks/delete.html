@@ -1,0 +1,21 @@
+{% extends 'looks/base.html' %}
+
+{% block title %}
+    Delete look
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h5 class="mt-4 mb-4">Are you sure want to delete "{{ look }}"?</h5>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <input class="btn btn-outline-danger" type="submit" name="Confirm">
+                    <a class="btn btn-outline-secondary" href="{% url 'catalogues:catalogue' %}">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'looks/base.html' %}
+
+{% block title %}
+    Look page
+{% endblock %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="container">
+        <h1>{{ look.name }}
+        {% if request.user.is_authenticated %}
+            {% if is_favourite %}
+                <a class="btn btn-lg btn-warning ml-auto mb-2" href="{% url 'looks:favourite' look.pk %}">Favourite</a>
+            {% else %}
+                <a class="btn btn-lg btn-outline-warning ml-auto mb-2" href="{% url 'looks:favourite' look.pk %}">Favourite</a>
+            {% endif %}
+        {% endif %}
+        </h1>
+        <table class="table mt-3 table-hover">
+            <thead>
+            <tr>
+                <th>Look</th>
+                <th>Apparels</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ look.name }}</td>
+                <td>
+                    {% for apparel in apparels %}
+                        {{ apparel.name }};
+                    {% endfor %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h5>Description</h5>
+        <p>{{ look.description }}</p>
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                {% if request.user.is_authenticated %}
+                    <a class="btn btn-outline-success" href="{% url 'looks:update' look.pk %}">Edit</a>
+                {% endif %}
+                {% if request.user.is_staff %}
+                    <a class="btn btn-outline-danger" href="{% url 'looks:delete' look.pk %}">Delete</a>
+                {% endif %}
+                <a class="btn btn-outline-secondary" href="{% url 'catalogues:catalogue' %}">Back</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
